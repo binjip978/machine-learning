@@ -119,10 +119,11 @@ class LearningAgent(Agent):
             else:
                 current_actions = self.Q[state]
                 current_max = self.get_maxQ(state)
+                possible_actions = []
                 for action in current_actions:
                     if current_max == current_actions[action]:
-                        # print("debug", current_actions[action])
-                        return action
+                        possible_actions.append(action)
+                return random.choice(possible_actions)
         else:
             return random.choice(self.valid_actions)
 
